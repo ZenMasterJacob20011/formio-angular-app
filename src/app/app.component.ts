@@ -1,16 +1,20 @@
 import {Component} from '@angular/core';
-import {RouterModule, RouterOutlet} from '@angular/router';
-import {FormioModule} from '@formio/angular';
+import {UserLoginComponent} from './auth/user-login/user-login.component';
+import {NgIf} from '@angular/common';
+import {FormioAuthService} from '@formio/angular/auth';
 
 @Component({
   selector: 'app-root',
   imports: [
-    RouterOutlet,
-    FormioModule,
+    UserLoginComponent,
+    NgIf
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'formio-angular-app';
+  constructor(public service: FormioAuthService) {
+
+  }
 }

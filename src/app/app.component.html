@@ -1,1 +1,6 @@
-<router-outlet />
+<div *ngIf="!service.authenticated">
+  <app-user-login></app-user-login>
+</div>
+<div *ngIf="service.authenticated">
+  <div>This is the home page</div>
+</div>
