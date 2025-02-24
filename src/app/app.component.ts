@@ -7,7 +7,7 @@ import {FormioAuthService} from '@formio/angular/auth';
   selector: 'app-root',
   imports: [
     UserLoginComponent,
-    NgIf
+    NgIf,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
