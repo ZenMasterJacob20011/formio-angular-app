@@ -6,4 +6,5 @@
 .login-container {
   border: 2px solid rgba(0, 0, 0, 0.176);
   border-radius: 2%;
+  width: 500px;
 }

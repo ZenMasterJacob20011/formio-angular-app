@@ -1,0 +1,13 @@
+.logout {
+  cursor: pointer;
+  color: rgb(49, 131, 200);
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.togglecontext {
+  cursor: pointer;
+  color: rgb(49, 131, 200);
+  margin-left: 1em;
+  margin-right: 1em;
+}

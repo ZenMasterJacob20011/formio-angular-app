@@ -1,13 +1,13 @@
 import {Component} from '@angular/core';
 import {UserLoginComponent} from './auth/user-login/user-login.component';
-import {NgIf} from '@angular/common';
 import {FormioAuthService} from '@formio/angular/auth';
+import {InfoPanelComponent} from './info-panel/info-panel.component';
 
 @Component({
   selector: 'app-root',
   imports: [
     UserLoginComponent,
-    NgIf,
+    InfoPanelComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
