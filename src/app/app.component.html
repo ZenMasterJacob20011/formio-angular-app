@@ -1,6 +1,8 @@
-<div *ngIf="!service.authenticated" style="height: 100vh">
-  <div class="d-flex justify-content-center align-items-center h-100">
-    <div class="w-50 h-75 p-5 login-container d-flex flex-column justify-content-around">
+<div class="min-vh-100 d-flex flex-column">
+<app-info-panel></app-info-panel>
+@if (!service.authenticated) {
+  <div class="d-flex justify-content-center align-items-center flex-grow-1">
+    <div class="h-75 p-5 login-container d-flex flex-column justify-content-around">
       <div class="text-center">
         <img height="25px" src="logo-formio-horizontal-lightbg.svg" alt="">
         <h6 class="mt-2">Open Source Developer Portal</h6>
@@ -11,11 +13,12 @@
         resource.</p>
       <div>
         <a href="https://help.form.io/" class="d-block">Form.io Help Documentation</a>
-        <a href="https://help.form.io/developers/javascript-development/javascript-sdk">Form.io SDK / Renderer Documentation</a>
+        <a href="https://help.form.io/developers/javascript-development/javascript-sdk">Form.io SDK / Renderer
+          Documentation</a>
       </div>
     </div>
   </div>
-</div>
-<div *ngIf="service.authenticated">
+} @else {
   <div>This is the home page</div>
+}
 </div>
