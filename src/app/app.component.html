@@ -1,24 +1,47 @@
 <div class="min-vh-100 d-flex flex-column">
-<app-info-panel></app-info-panel>
-@if (!service.authenticated) {
-  <div class="d-flex justify-content-center align-items-center flex-grow-1">
-    <div class="h-75 p-5 login-container d-flex flex-column justify-content-around">
-      <div class="text-center">
-        <img height="25px" src="logo-formio-horizontal-lightbg.svg" alt="">
-        <h6 class="mt-2">Open Source Developer Portal</h6>
-      </div>
-      <app-user-login></app-user-login>
-      <p><b>Admin / First Time Login</b>: Use the account that was created during installation.</p>
-      <p>Additional accounts are created by logging in with the admin account and adding an entry to the <b>Admin</b>
-        resource.</p>
-      <div>
-        <a href="https://help.form.io/" class="d-block">Form.io Help Documentation</a>
-        <a href="https://help.form.io/developers/javascript-development/javascript-sdk">Form.io SDK / Renderer
-          Documentation</a>
+  <app-info-panel></app-info-panel>
+  @if (!service.authenticated) {
+    <div class="d-flex justify-content-center align-items-center flex-grow-1">
+      <div class="h-75 p-5 login-container d-flex flex-column justify-content-around">
+        <div class="text-center">
+          <img height="25px" src="logo-formio-horizontal-lightbg.svg" alt="">
+          <h6 class="mt-2">Open Source Developer Portal</h6>
+        </div>
+        <app-user-login></app-user-login>
+        <p><b>Admin / First Time Login</b>: Use the account that was created during installation.</p>
+        <p>Additional accounts are created by logging in with the admin account and adding an entry to the <b>Admin</b>
+          resource.</p>
+        <div>
+          <a href="https://help.form.io/" class="d-block">Form.io Help Documentation</a>
+          <a href="https://help.form.io/developers/javascript-development/javascript-sdk">Form.io SDK / Renderer
+            Documentation</a>
+        </div>
       </div>
     </div>
-  </div>
-} @else {
-  <div>This is the home page</div>
-}
+  } @else {
+    <div class="d-flex justify-content-center mt-4">
+      <div class="panel panel-resources mx-5 w-100">
+        <div class="panel-header">
+          <div class="d-flex justify-content-between">
+            <span class="panel-title"><img src="icon-resource.svg" alt="icon" width="15px">Resources <i class="bi bi-question-circle-fill"></i></span>
+            <button class="btn btn-primary">+ New Resource</button>
+          </div>
+        </div>
+        <div class="panel-body">
+          <formio-grid [isActionAllowed]="isActionAllowed" src="http://localhost:3001" gridType="form" [query]="{type: 'resource'}"></formio-grid>
+        </div>
+      </div>
+      <div class="panel panel-forms mx-5 w-100">
+        <div class="panel-header">
+          <div class="d-flex justify-content-between">
+            <span class="panel-title"><img src="icon-resource.svg" alt="icon" width="15px">Forms <i class="bi bi-question-circle-fill"></i></span>
+            <button class="btn btn-success">+ New Form</button>
+          </div>
+        </div>
+        <div class="panel-body">
+          <formio-grid [isActionAllowed]="isActionAllowed" src="http://localhost:3001" gridType="form" [query]="{type: 'form'}"></formio-grid>
+        </div>
+      </div>
+    </div>
+  }
 </div>
