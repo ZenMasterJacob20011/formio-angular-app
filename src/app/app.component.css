@@ -8,3 +8,32 @@
   border-radius: 2%;
   width: 500px;
 }
+
+.panel-header {
+  padding: 0.5em 1em 3em;
+  border-color: rgb(222, 226, 230);
+  border-style: solid;
+  border-width: 1px;
+}
+
+.panel-resources .panel-header {
+  background-color: rgb(239, 248, 255);
+  border-bottom-color: rgb(170, 211, 244);
+  border-bottom-style: solid;
+}
+
+.panel-forms .panel-header {
+  background-color: rgb(240, 250, 235);
+  border-bottom-color: rgb(168, 217, 141);
+  border-bottom-style: solid;
+}
+
+.panel-resources .panel-title {
+  color: rgb(35, 104, 162);
+  font-weight: bolder;
+}
+
+.panel-forms .panel-title {
+  color: rgb(57, 119, 24);
+  font-weight: bolder;
+}
