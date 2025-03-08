@@ -27,7 +27,6 @@ export class AppComponent {
 
   }
   navigateToViewPage(event: Record<string, any>){
-    console.log('hello');
     this.router.navigate([event['type'], event['_id'], 'edit']);
   }
 

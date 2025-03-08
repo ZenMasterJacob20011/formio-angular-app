@@ -1,9 +1,11 @@
-import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormioService} from '@formio/angular';
+import {EditTabComponent} from '../edit-tab/edit-tab.component';
 
 @Component({
   selector: 'app-view-form',
   imports: [
+    EditTabComponent
   ],
   providers: [
     {
@@ -15,12 +17,12 @@ import {FormioService} from '@formio/angular';
   styleUrls: ['./view-form.component.css', '../app.component.css']
 })
 export class ViewFormComponent implements OnInit{
-  @Input() viewType!: string;
+  @Input() formType!: 'form' | 'resource';
   @Input() id!: string
-  @Input() formTitle: string | undefined
-  private formioService: FormioService | undefined;
+  @Input() formTitle: string
+  private formioService!: FormioService;
   constructor() {
-    this.formTitle = "hello";
+    this.formTitle = "";
   }
   ngOnInit() {
     this.formioService = new FormioService(`http://localhost:3001/form/${this.id}`, {});
@@ -28,9 +30,9 @@ export class ViewFormComponent implements OnInit{
     const realThis = this;
     form.subscribe({
       next(formioForm){
-        realThis.formTitle = formioForm.title;
+        realThis.formTitle = formioForm.title!;
       }
-    })
+    });
   }
 
 }

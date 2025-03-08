@@ -1,6 +1,23 @@
-<div class="panel panel-{{viewType}}s">
+<div class="panel panel-{{formType}}s">
   <div class="panel-header">
-    <div class="panel-title">{{formTitle}}</div>
+    <div class="panel-top">
+      <div class="panel-title">{{ formTitle }}</div>
+    </div>
+    <div class="panel-bottom">
+      <div class="tabs">
+        <button class="tab tab-selected">Edit {{ formType }}</button>
+        <button class="tab">Enter Data</button>
+        <button
+          class="tab">View Data
+        </button>
+        <button class="tab">{{ formType }}
+          Actions
+        </button>
+        <button class="tab">Access</button>
+      </div>
+    </div>
   </div>
-  <div class="panel-body"></div>
+  <div class="panel-body">
+    <app-edit-tab></app-edit-tab>
+  </div>
 </div>

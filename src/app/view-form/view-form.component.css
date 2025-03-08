@@ -1,0 +1,21 @@
+.tabs {
+  margin-bottom: -2px;
+  margin-left: 1em;
+}
+
+.tab {
+  border: none;
+  background: none;
+  outline: inherit;
+  font: inherit;
+}
+
+.tab-selected {
+  border-top-color: #a8d98d;
+  border-left-color: #a8d98d;
+  border-right-color: #a8d98d;
+  border-width: 2px;
+  border-style: solid;
+  border-bottom-color: white;
+  background: white;
+}
