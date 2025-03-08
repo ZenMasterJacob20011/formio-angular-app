@@ -1,3 +1,33 @@
+<ng-template #resources>
+  <div class="panel panel-resources mx-5 w-100">
+    <div class="panel-header">
+      <div class="d-flex justify-content-between">
+            <span class="panel-title"><img src="icon-resource.svg" alt="icon" width="15px">Resources <i
+              class="bi bi-question-circle-fill"></i></span>
+        <button class="btn btn-primary">+ New Resource</button>
+      </div>
+    </div>
+    <div class="panel-body">
+      <formio-grid [isActionAllowed]="isActionAllowed" (rowSelect)="navigateToViewPage($event)" src="http://localhost:3001" gridType="form"
+                   [query]="{type: 'resource'}"></formio-grid>
+    </div>
+  </div>
+</ng-template>
+<ng-template #forms>
+  <div class="panel panel-forms mx-5 w-100">
+    <div class="panel-header">
+      <div class="d-flex justify-content-between">
+            <span class="panel-title"><img src="icon-resource.svg" alt="icon" width="15px">Forms <i
+              class="bi bi-question-circle-fill"></i></span>
+        <button class="btn btn-success">+ New Form</button>
+      </div>
+    </div>
+    <div class="panel-body">
+      <formio-grid [isActionAllowed]="isActionAllowed" (rowSelect)="navigateToViewPage($event)" src="http://localhost:3001" gridType="form"
+                   [query]="{type: 'form'}"></formio-grid>
+    </div>
+  </div>
+</ng-template>
 <div class="min-vh-100 d-flex flex-column">
   <app-info-panel></app-info-panel>
   @if (!service.authenticated) {
@@ -20,28 +50,13 @@
     </div>
   } @else {
     <div class="d-flex justify-content-center mt-4">
-      <div class="panel panel-resources mx-5 w-100">
-        <div class="panel-header">
-          <div class="d-flex justify-content-between">
-            <span class="panel-title"><img src="icon-resource.svg" alt="icon" width="15px">Resources <i class="bi bi-question-circle-fill"></i></span>
-            <button class="btn btn-primary">+ New Resource</button>
-          </div>
-        </div>
-        <div class="panel-body">
-          <formio-grid [isActionAllowed]="isActionAllowed" src="http://localhost:3001" gridType="form" [query]="{type: 'resource'}"></formio-grid>
-        </div>
-      </div>
-      <div class="panel panel-forms mx-5 w-100">
-        <div class="panel-header">
-          <div class="d-flex justify-content-between">
-            <span class="panel-title"><img src="icon-resource.svg" alt="icon" width="15px">Forms <i class="bi bi-question-circle-fill"></i></span>
-            <button class="btn btn-success">+ New Form</button>
-          </div>
-        </div>
-        <div class="panel-body">
-          <formio-grid [isActionAllowed]="isActionAllowed" src="http://localhost:3001" gridType="form" [query]="{type: 'form'}"></formio-grid>
-        </div>
-      </div>
+      <ng-container *ngIf="router.url === '/' || router.url.includes('/resource')">
+        <ng-container *ngTemplateOutlet="resources"></ng-container>
+      </ng-container>
+      <ng-container *ngIf="router.url === '/' || router.url.includes('/form')">
+        <ng-container *ngTemplateOutlet="forms"></ng-container>
+      </ng-container>
+      <router-outlet></router-outlet>
     </div>
   }
 </div>
