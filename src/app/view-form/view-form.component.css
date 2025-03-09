@@ -23,4 +23,7 @@
 .panel-body {
   max-height: 700px;
   overflow-y: auto;
+  border-color: rgb(222, 226, 230);
+  border-style: none solid solid;
+  border-width: 2px;
 }
