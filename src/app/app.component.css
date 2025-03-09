@@ -1,5 +1,4 @@
 :host {
-  display: block;
   min-height: 100vh;
 }
 
@@ -47,3 +46,5 @@
   color: rgb(57, 119, 24);
   font-weight: bolder;
 }
+
+
