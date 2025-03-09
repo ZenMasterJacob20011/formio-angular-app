@@ -19,3 +19,8 @@
   border-bottom-color: white;
   background: white;
 }
+
+.panel {
+  max-height: 700px;
+  overflow-y: auto;
+}
