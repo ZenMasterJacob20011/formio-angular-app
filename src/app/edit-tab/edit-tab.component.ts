@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {AfterViewInit, Component, Input} from '@angular/core';
 import {FormioForm} from '@formio/angular';
 import {FormioEmbedModule} from '@formio/angular/embed';
 
@@ -10,11 +10,15 @@ import {FormioEmbedModule} from '@formio/angular/embed';
   templateUrl: './edit-tab.component.html',
   styleUrl: './edit-tab.component.css'
 })
-export class EditTabComponent {
+export class EditTabComponent implements AfterViewInit {
   @Input() form: FormioForm
 
   constructor() {
     this.form = {};
+  }
+
+  ngAfterViewInit() {
+
   }
 
 }
