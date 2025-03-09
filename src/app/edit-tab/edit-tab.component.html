@@ -1,1 +1,37 @@
-<p>edit-tab works!</p>
+<div class="edit">
+  <div class="form-info">
+    <div class="form-info-top">
+      <span>
+        <div>
+          <label for="formTitle">Form Title</label>
+          <input id="formTitle" type="text">
+        </div>
+        <div>
+          <label for="formName">Form Name</label>
+          <input id="formName" type="text">
+        </div>
+      </span>
+      <span>
+        <label for="tags">Tags</label>
+        <input id="tags" type="text" placeholder="Add a tag">
+      </span>
+    </div>
+    <div class="form-info-bottom">
+      <span class="path">
+        <label for="path">Path</label>
+        <input id="path" type="text">
+      </span>
+      <span class="displayAs">
+        <label for="displayAs">Display As</label>
+        <select id="displayAs">
+          <option>Form</option>
+          <option>Wizard</option>
+        </select>
+      </span>
+    </div>
+  </div>
+  <div id="formBuilder"></div>
+  <div class="d-flex justify-content-end">
+    <button class="btn btn-primary">Save {{formType}}</button>
+  </div>
+</div>
