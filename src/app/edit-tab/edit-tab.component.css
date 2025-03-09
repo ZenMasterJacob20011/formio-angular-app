@@ -1,0 +1,8 @@
+.form-info-top {
+  display: flex;
+}
+
+.form-info-bottom {
+  display: flex;
+  margin-bottom: 1em;
+}
