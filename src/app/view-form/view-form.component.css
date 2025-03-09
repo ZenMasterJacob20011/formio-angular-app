@@ -20,7 +20,7 @@
   background: white;
 }
 
-.panel {
+.panel-body {
   max-height: 700px;
   overflow-y: auto;
 }
