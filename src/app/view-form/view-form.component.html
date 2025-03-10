@@ -18,6 +18,10 @@
     </div>
   </div>
   <div class="panel-body">
-    <app-edit-tab [form]="form"></app-edit-tab>
+    @if (form){
+      <app-edit-tab [form]="form"></app-edit-tab>
+    } @else {
+      <div>Loading</div>
+    }
   </div>
 </div>
