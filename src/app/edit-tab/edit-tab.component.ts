@@ -1,7 +1,6 @@
-import {AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {FormioForm} from '@formio/angular';
 import {FormioEmbedModule} from '@formio/angular/embed';
-import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-edit-tab',
@@ -11,21 +10,11 @@ import {Observable} from 'rxjs';
   templateUrl: './edit-tab.component.html',
   styleUrl: './edit-tab.component.css'
 })
-export class EditTabComponent implements AfterViewInit, OnInit, OnChanges {
+export class EditTabComponent {
   @Input() form!: FormioForm
+
   constructor() {
 
-  }
-
-  ngAfterViewInit() {
-    console.log(this.form);
-  }
-
-  ngOnInit(): void {
-
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
   }
 
 }
