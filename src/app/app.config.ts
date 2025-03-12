@@ -1,9 +1,10 @@
 import {ApplicationConfig, provideZoneChangeDetection} from '@angular/core';
-import {provideRouter, withComponentInputBinding} from '@angular/router';
+import {provideRouter, RouteReuseStrategy, withComponentInputBinding} from '@angular/router';
 
 import {routes} from './app.routes';
 import {FormioAuthConfig, FormioAuthService} from '@formio/angular/auth';
 import {FORMIO_CONFIG, FormioAppConfig} from '@formio/angular';
+import {CustomRouteReuseStrategy} from './custom-route-reuse-strategy';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -26,6 +27,10 @@ export const appConfig: ApplicationConfig = {
           form: 'admin/login'
         }
       }
+    },
+    {
+      provide: RouteReuseStrategy,
+      useClass: CustomRouteReuseStrategy
     }
   ]
 };

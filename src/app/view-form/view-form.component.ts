@@ -1,27 +1,25 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {FormioForm, FormioService} from '@formio/angular';
-import {EditTabComponent} from '../edit-tab/edit-tab.component';
+import {FormioForm} from '@formio/angular';
 import {Subject, takeUntil} from 'rxjs';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, RouterLink, RouterOutlet} from '@angular/router';
+import {FormioServiceWrapper} from '../formio.service.wrapper';
 
 @Component({
   selector: 'app-view-form',
   imports: [
-    EditTabComponent
+    RouterOutlet,
+    RouterLink
   ],
   templateUrl: './view-form.component.html',
   styleUrls: ['./view-form.component.css', '../app.component.css']
 })
-export class ViewFormComponent implements OnInit, OnDestroy{
+export class ViewFormComponent implements OnInit, OnDestroy {
   @Input() formType!: 'form' | 'resource';
   @Input() id!: string
-  formTitle: string
   form: FormioForm | undefined
-  private formioService!: FormioService;
   private destroy$ = new Subject<void>();
 
-  constructor(private route: ActivatedRoute) {
-    this.formTitle = '';
+  constructor(private route: ActivatedRoute, protected formioServiceWrapper: FormioServiceWrapper) {
   }
 
   ngOnInit() {
@@ -29,20 +27,19 @@ export class ViewFormComponent implements OnInit, OnDestroy{
       .pipe(takeUntil(this.destroy$))
       .subscribe(param => {
         let id = param.get('id');
-        this.formioService = new FormioService(`http://localhost:3001/form/${id}`, {});
-        const form = this.formioService.loadForm();
-        this.formTitle = "";
         const realThis = this;
-        form.subscribe({
+        this.formioServiceWrapper.loadForm(`http://localhost:3001/form/${id}`).subscribe({
           next(formioForm) {
-            realThis.formTitle = formioForm.title!;
+            realThis.formioServiceWrapper.form = formioForm;
             realThis.form = formioForm;
           }
-        })
+        });
+
       })
   }
 
   ngOnDestroy() {
+    delete this.formioServiceWrapper.form
     this.destroy$.next();
     this.destroy$.complete();
   }
