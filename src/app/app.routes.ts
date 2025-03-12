@@ -1,14 +1,40 @@
 import {Routes, UrlSegment} from '@angular/router';
 import {ViewFormComponent} from './view-form/view-form.component';
+import {EditTabComponent} from './tabs/edit-tab/edit-tab.component';
+import {UseTabComponent} from './tabs/use-tab/use-tab.component';
+import {ViewTabComponent} from './tabs/view-tab/view-tab.component';
+import {ActionsTabComponent} from './tabs/actions-tab/actions-tab.component';
+import {AccessTabComponent} from './tabs/access-tab/access-tab.component';
 
 export const routes: Routes = [
   {
-    matcher: (url) => {
-      if (url.length === 3 && url[0].path.match(/^form$|^resource$/gm) && url[1].path.match(/[a-zA-Z0-9]+/gm) && url[2].path.match(/^edit$/gm)){
-        return {consumed: url, posParams: {formType: new UrlSegment(url[0].path, {}), id: new UrlSegment(url[1].path, {})}};
+    path: ':formType/:id',
+    component: ViewFormComponent,
+    children: [
+      {
+        path: 'edit',
+        component: EditTabComponent,
+      },
+      {
+        path: 'use',
+        component: UseTabComponent
+      },
+      {
+        path: 'view',
+        component: ViewTabComponent
+      },
+      {
+        path: 'actions',
+        component: ActionsTabComponent
+      },
+      {
+        path: 'access',
+        component: AccessTabComponent
+      },
+      {
+        path: '**',
+        component: AccessTabComponent
       }
-      return null;
-    },
-    component: ViewFormComponent
-  }
+    ]
+  },
 ];

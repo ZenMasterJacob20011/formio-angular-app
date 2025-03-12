@@ -1,25 +1,21 @@
 <div class="panel panel-{{formType}}s">
   <div class="panel-header">
     <div class="panel-top">
-      <div class="panel-title">{{ formTitle }}</div>
+      <div class="panel-title">{{ form?.title }}</div>
     </div>
     <div class="panel-bottom">
       <div class="tabs">
-        <button class="tab tab-selected">Edit {{ formType }}</button>
-        <button class="tab">Enter Data</button>
-        <button
-          class="tab">View Data
-        </button>
-        <button class="tab">{{ formType }}
-          Actions
-        </button>
-        <button class="tab">Access</button>
+        <button class="tab tab-selected" routerLink="edit">Edit {{ formType }}</button>
+        <button class="tab" routerLink="use">Enter Data</button>
+        <button class="tab" routerLink="view">View Data</button>
+        <button class="tab" routerLink="actions">{{ formType }} Actions</button>
+        <button class="tab" routerLink="access">Access</button>
       </div>
     </div>
   </div>
   <div class="panel-body">
-    @if (form){
-      <app-edit-tab [form]="form"></app-edit-tab>
+    @if (formioServiceWrapper.form) {
+      <router-outlet></router-outlet>
     } @else {
       <div>Loading</div>
     }
