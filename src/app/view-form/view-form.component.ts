@@ -1,14 +1,15 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {FormioForm} from '@formio/angular';
 import {Subject, takeUntil} from 'rxjs';
-import {ActivatedRoute, RouterLink, RouterOutlet} from '@angular/router';
+import {ActivatedRoute, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {FormioServiceWrapper} from '../formio.service.wrapper';
 
 @Component({
   selector: 'app-view-form',
   imports: [
     RouterOutlet,
-    RouterLink
+    RouterLink,
+    RouterLinkActive
   ],
   templateUrl: './view-form.component.html',
   styleUrls: ['./view-form.component.css', '../app.component.css']
