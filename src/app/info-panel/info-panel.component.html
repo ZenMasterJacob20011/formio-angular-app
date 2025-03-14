@@ -3,7 +3,7 @@
   @if (service.authenticated) {
     <div>
       <span class="togglecontext"><i class="bi bi-arrow-right"></i> Info Panel</span>
-      <span class="logout">Logout <i class="bi bi-box-arrow-right"></i></span>
+      <span (click)="service.logout()" class="logout">Logout <i class="bi bi-box-arrow-right"></i></span>
     </div>
   }
 </div>
