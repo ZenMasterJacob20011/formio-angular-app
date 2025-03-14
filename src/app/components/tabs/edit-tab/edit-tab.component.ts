@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {FormioForm} from '@formio/angular';
 import {FormioEmbedModule} from '@formio/angular/embed';
-import {FormioServiceWrapper} from '../../formio.service.wrapper';
+import {FormioServiceWrapper} from '../../../services/formio.service.wrapper';
 
 @Component({
   selector: 'app-edit-tab',

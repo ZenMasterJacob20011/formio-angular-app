@@ -73,6 +73,9 @@
         <div class="col-auto flex-grow-{{router.url.includes('/form') || router.url.includes('/resource') ? 1 : 0}}">
           <router-outlet></router-outlet>
         </div>
+        @if (infoPanelService.open){
+          <div class="col" [innerHTML]="this.infoPanelHTMLContent"></div>
+        }
       </div>
     </div>
   }

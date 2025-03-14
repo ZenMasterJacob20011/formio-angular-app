@@ -1,10 +1,10 @@
 import {Routes, UrlSegment} from '@angular/router';
-import {ViewFormComponent} from './view-form/view-form.component';
-import {EditTabComponent} from './tabs/edit-tab/edit-tab.component';
-import {UseTabComponent} from './tabs/use-tab/use-tab.component';
-import {ViewTabComponent} from './tabs/view-tab/view-tab.component';
-import {ActionsTabComponent} from './tabs/actions-tab/actions-tab.component';
-import {AccessTabComponent} from './tabs/access-tab/access-tab.component';
+import {ViewFormComponent} from './components/view-form/view-form.component';
+import {EditTabComponent} from './components/tabs/edit-tab/edit-tab.component';
+import {UseTabComponent} from './components/tabs/use-tab/use-tab.component';
+import {ViewTabComponent} from './components/tabs/view-tab/view-tab.component';
+import {ActionsTabComponent} from './components/tabs/actions-tab/actions-tab.component';
+import {AccessTabComponent} from './components/tabs/access-tab/access-tab.component';
 
 export const routes: Routes = [
   {

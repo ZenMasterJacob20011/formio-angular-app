@@ -2,7 +2,7 @@
   <img class="nav-logo" src="logo-formio-horizontal-lightbg.svg" width="80px" alt="formio-logo" (click)="router.navigate(['/'])">
   @if (service.authenticated) {
     <div>
-      <span class="togglecontext"><i class="bi bi-arrow-right"></i> Info Panel</span>
+      <span (click)="infoPanelService.toggleOpen()" class="togglecontext"><i class="bi bi-arrow-right"></i> Info Panel</span>
       <span (click)="service.logout()" class="logout">Logout <i class="bi bi-box-arrow-right"></i></span>
     </div>
   }
