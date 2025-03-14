@@ -20,6 +20,18 @@
   background: white;
 }
 
+.panel-forms .tab-selected {
+  border-top-color: #a8d98d;
+  border-left-color: #a8d98d;
+  border-right-color: #a8d98d;
+}
+
+.panel-resources .tab-selected {
+border-top-color: rgb(170, 211, 244);
+  border-left-color: rgb(170, 211, 244);
+  border-right-color: rgb(170, 211, 244);
+}
+
 .panel-body {
   max-height: 700px;
   overflow-y: auto;
