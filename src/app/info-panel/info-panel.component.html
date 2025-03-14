@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-between">
-  <img src="logo-formio-horizontal-lightbg.svg" width="80px">
+  <img class="nav-logo" src="logo-formio-horizontal-lightbg.svg" width="80px" alt="formio-logo" (click)="router.navigate(['/'])">
   @if (service.authenticated) {
     <div>
       <span class="togglecontext"><i class="bi bi-arrow-right"></i> Info Panel</span>

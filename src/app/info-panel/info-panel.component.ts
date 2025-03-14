@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {FormioAuthService} from '@formio/angular/auth';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-info-panel',
@@ -10,7 +11,7 @@ import {FormioAuthService} from '@formio/angular/auth';
   styleUrl: './info-panel.component.css'
 })
 export class InfoPanelComponent {
-  constructor(public service: FormioAuthService) {
+  constructor(public service: FormioAuthService, public router: Router) {
 
   }
 }
