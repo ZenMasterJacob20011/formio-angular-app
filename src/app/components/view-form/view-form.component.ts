@@ -3,6 +3,7 @@ import {FormioForm} from '@formio/angular';
 import {Subject, takeUntil} from 'rxjs';
 import {ActivatedRoute, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {FormioServiceWrapper} from '../../services/formio.service.wrapper';
+import {formType} from '../../app.component';
 
 @Component({
   selector: 'app-view-form',
@@ -15,7 +16,7 @@ import {FormioServiceWrapper} from '../../services/formio.service.wrapper';
   styleUrls: ['./view-form.component.css', '../../app.component.css']
 })
 export class ViewFormComponent implements OnInit, OnDestroy {
-  @Input() formType!: 'form' | 'resource';
+  @Input() formType!: formType;
   @Input() id!: string
   form: FormioForm | undefined
   private destroy$ = new Subject<void>();

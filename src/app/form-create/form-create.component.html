@@ -1,0 +1,14 @@
+<div class="panel panel-{{formType}}s">
+  <div class="panel-header">
+    <div class="panel-top">
+      <div class="panel-title">New {{ formType }}</div>
+    </div>
+  </div>
+  <div class="panel-body">
+    @if (formioServiceWrapper.form) {
+      <app-form-edit [editType]="editType.CREATE"></app-form-edit>
+    } @else {
+      <div>Loading</div>
+    }
+  </div>
+</div>

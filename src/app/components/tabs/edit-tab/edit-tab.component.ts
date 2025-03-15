@@ -1,29 +1,16 @@
 import {Component} from '@angular/core';
-import {FormioForm} from '@formio/angular';
 import {FormioEmbedModule} from '@formio/angular/embed';
-import {FormioServiceWrapper} from '../../../services/formio.service.wrapper';
+import {editType, FormEditComponent} from '../../../form-edit/form-edit.component';
 
 @Component({
   selector: 'app-edit-tab',
   imports: [
-    FormioEmbedModule
+    FormioEmbedModule,
+    FormEditComponent
   ],
   templateUrl: './edit-tab.component.html',
   styleUrl: './edit-tab.component.css',
 })
 export class EditTabComponent {
-  form: (FormioForm & { _id?: string; }) | undefined
-
-  constructor(private formioServiceWrapper: FormioServiceWrapper) {
-    this.form = formioServiceWrapper.form;
-  }
-
-  saveForm() {
-    if (this.form) {
-      this.formioServiceWrapper.saveForm(this.form).subscribe({
-        next(value) {
-        }
-      });
-    }
-  }
+  protected readonly editType = editType;
 }

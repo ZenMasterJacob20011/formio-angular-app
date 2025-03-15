@@ -4,10 +4,13 @@ import {FormioAuthService} from '@formio/angular/auth';
 import {InfoPanelComponent} from './components/info-panel/info-panel.component';
 import {FormioGrid} from '@formio/angular/grid';
 import {NgIf, NgTemplateOutlet} from '@angular/common';
-import {ActivatedRoute, NavigationEnd, Router, RouterOutlet} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router, RouterLink, RouterOutlet} from '@angular/router';
 import {InfoPanelService} from './services/info-panel.service';
-import {document} from 'ngx-bootstrap/utils';
 
+export enum formType {
+  form = 'form',
+  resource = 'resource'
+}
 
 @Component({
   selector: 'app-root',
@@ -18,6 +21,7 @@ import {document} from 'ngx-bootstrap/utils';
     NgTemplateOutlet,
     RouterOutlet,
     NgIf,
+    RouterLink,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
