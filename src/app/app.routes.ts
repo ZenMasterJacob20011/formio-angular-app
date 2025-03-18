@@ -5,7 +5,7 @@ import {UseTabComponent} from './components/tabs/use-tab/use-tab.component';
 import {ViewTabComponent} from './components/tabs/view-tab/view-tab.component';
 import {ActionsTabComponent} from './components/tabs/actions-tab/actions-tab.component';
 import {AccessTabComponent} from './components/tabs/access-tab/access-tab.component';
-import {FormCreateComponent} from './form-create/form-create.component';
+import {FormCreateComponent} from './components/form-create/form-create.component';
 import {formType} from './app.component';
 
 export const routes: Routes = [
