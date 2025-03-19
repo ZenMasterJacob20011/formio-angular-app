@@ -4,22 +4,22 @@
       <span class="d-inline-block w-50 me-3">
         <div class="d-flex justify-content-between align-items-center mb-2">
           <label class="fw-bolder form-label" for="formTitle">Form Title</label>
-          <input value="{{form?.title}}" class="form-control w-50" id="formTitle" type="text">
+          <input value="{{form?.title}}" class="form-control w-50" id="formTitle" type="text" [(ngModel)]="formTitle">
         </div>
         <div class="d-flex justify-content-between align-items-center">
           <label class="fw-bolder form-label" for="formName">Form Name</label>
-          <input value="{{form?.name}}" class="form-control w-50" id="formName" type="text">
+          <input value="{{form?.name}}" class="form-control w-50" id="formName" type="text" [(ngModel)]="formName">
         </div>
       </span>
       <span class="d-inline-block">
         <label class="fw-bolder form-label" for="tags">Tags</label>
-        <input value="{{form?.tags}}" class="form-control" id="tags" type="text" placeholder="Add a tag">
+        <input value="{{form?.tags}}" class="form-control" id="tags" type="text" placeholder="Add a tag" [(ngModel)]="formTags">
       </span>
     </div>
     <div class="form-info-bottom">
       <span class="path w-50 me-3">
         <label class="fw-bolder form-label" for="path">Path</label>
-        <input value="{{form?.path}}" class="form-control" id="path" type="text">
+        <input value="{{form?.path}}" class="form-control" id="path" type="text" [(ngModel)]="formPath">
       </span>
       <span class="displayAs w-50">
         <label class="fw-bolder form-label" for="displayAs">Display As</label>

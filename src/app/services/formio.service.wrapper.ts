@@ -15,7 +15,9 @@ export class FormioServiceWrapper {
     if (this.formioService) {
       return this.formioService.saveForm(form);
     }
-    throw Error('You need to load a form first before saving');
+    this.formioService = new FormioService('/form');
+    return this.formioService.saveForm(form);
+
   }
 
   loadForm(url: string) {
