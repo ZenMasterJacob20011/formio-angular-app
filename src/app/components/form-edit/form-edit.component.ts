@@ -32,6 +32,10 @@ export class FormEditComponent {
 
     constructor(private formioServiceWrapper: FormioServiceWrapper, private router: Router) {
         this.form = formioServiceWrapper.form;
+        this.formTitle = this.form?.title;
+        this.formName = this.form?.name;
+        this.formTags = this.form?.tags;
+        this.formPath = this.form?.path;
     }
 
     saveForm() {
