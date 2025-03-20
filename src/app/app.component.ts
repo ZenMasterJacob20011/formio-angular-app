@@ -1,4 +1,4 @@
-import {AfterViewInit, Component} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter} from '@angular/core';
 import {UserLoginComponent} from './components/auth/user-login/user-login.component';
 import {FormioAuthService} from '@formio/angular/auth';
 import {InfoPanelComponent} from './components/info-panel/info-panel.component';
@@ -6,6 +6,8 @@ import {FormioGrid} from '@formio/angular/grid';
 import {NgIf, NgTemplateOutlet} from '@angular/common';
 import {ActivatedRoute, NavigationEnd, Router, RouterLink, RouterOutlet} from '@angular/router';
 import {InfoPanelService} from './services/info-panel.service';
+import {FormioForm} from '@formio/angular';
+import {FormioServiceWrapper} from './services/formio.service.wrapper';
 
 export enum formType {
   form = 'form',
@@ -29,9 +31,11 @@ export enum formType {
 export class AppComponent implements AfterViewInit {
   title = 'formio-angular-app';
   infoPanelHTMLContent: string
+  refreshGrid: EventEmitter<object>
 
-  constructor(public service: FormioAuthService, public router: Router, public infoPanelService: InfoPanelService, public activatedRoute: ActivatedRoute) {
+  constructor(private formioServiceWrapper: FormioServiceWrapper,public service: FormioAuthService, public router: Router, public infoPanelService: InfoPanelService, public activatedRoute: ActivatedRoute) {
     this.infoPanelHTMLContent = '';
+    this.refreshGrid = new EventEmitter();
   }
 
 
@@ -90,6 +94,17 @@ export class AppComponent implements AfterViewInit {
 </div>`
       default:
         return ''
+    }
+  }
+
+  handleRowAction(event: any){
+    if (event.action === 'delete'){
+      const result = confirm('Are you sure you want to delete this form?');
+      if(result) {
+        this.formioServiceWrapper.deleteForm(event.row._id).then((response: any) => {
+          this.refreshGrid.emit({});
+        });
+      }
     }
   }
 }
