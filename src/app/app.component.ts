@@ -31,11 +31,13 @@ export enum formType {
 export class AppComponent implements AfterViewInit {
   title = 'formio-angular-app';
   infoPanelHTMLContent: string
-  refreshGrid: EventEmitter<object>
+  refreshResourceGrid: EventEmitter<object>
+  refreshFormGrid: EventEmitter<object>
 
   constructor(private formioServiceWrapper: FormioServiceWrapper,public service: FormioAuthService, public router: Router, public infoPanelService: InfoPanelService, public activatedRoute: ActivatedRoute) {
     this.infoPanelHTMLContent = '';
-    this.refreshGrid = new EventEmitter();
+    this.refreshResourceGrid = new EventEmitter();
+    this.refreshFormGrid = new EventEmitter();
   }
 
 
@@ -102,7 +104,11 @@ export class AppComponent implements AfterViewInit {
       const result = confirm('Are you sure you want to delete this form?');
       if(result) {
         this.formioServiceWrapper.deleteForm(event.row._id).then((response: any) => {
-          this.refreshGrid.emit({});
+          if(event.row.type === formType.resource){
+            this.refreshResourceGrid.emit({type: "resource"});
+          }else{
+            this.refreshFormGrid.emit({type: "form"});
+          }
         });
       }
     }
