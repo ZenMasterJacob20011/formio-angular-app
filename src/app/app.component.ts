@@ -34,7 +34,7 @@ export class AppComponent implements AfterViewInit {
   refreshResourceGrid: EventEmitter<object>
   refreshFormGrid: EventEmitter<object>
 
-  constructor(private formioServiceWrapper: FormioServiceWrapper,public service: FormioAuthService, public router: Router, public infoPanelService: InfoPanelService, public activatedRoute: ActivatedRoute) {
+  constructor(private formioServiceWrapper: FormioServiceWrapper,public service: FormioAuthService, public router: Router, public infoPanelService: InfoPanelService) {
     this.infoPanelHTMLContent = '';
     this.refreshResourceGrid = new EventEmitter();
     this.refreshFormGrid = new EventEmitter();
@@ -46,7 +46,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   isActionAllowed = (action: string) => {
-    return action !== 'formCreate';
+    return !(action === 'formCreate' || action === 'formView' || action === 'formSubmission');
   }
 
   ngAfterViewInit(): void {
