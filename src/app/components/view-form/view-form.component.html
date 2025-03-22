@@ -5,10 +5,10 @@
     </div>
     <div class="panel-bottom">
       <div class="tabs">
-        <button routerLinkActive="tab-selected" class="tab" routerLink="edit">Edit {{ formType }}</button>
+        <button routerLinkActive="tab-selected" class="tab" routerLink="edit">Edit {{ _.capitalize(formType) }}</button>
         <button routerLinkActive="tab-selected" class="tab" routerLink="use">Enter Data</button>
         <button routerLinkActive="tab-selected" class="tab" routerLink="view">View Data</button>
-        <button routerLinkActive="tab-selected" class="tab" routerLink="actions">{{ formType }} Actions</button>
+        <button routerLinkActive="tab-selected" class="tab" routerLink="actions">{{ _.capitalize(formType) }} Actions</button>
         <button routerLinkActive="tab-selected" class="tab" routerLink="access">Access</button>
       </div>
     </div>

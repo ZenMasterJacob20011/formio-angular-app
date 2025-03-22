@@ -4,6 +4,7 @@ import {Subject, takeUntil} from 'rxjs';
 import {ActivatedRoute, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {FormioServiceWrapper} from '../../services/formio.service.wrapper';
 import {formType} from '../../app.component';
+import _ from 'lodash';
 
 @Component({
   selector: 'app-view-form',
@@ -46,4 +47,5 @@ export class ViewFormComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
+  protected readonly _ = _;
 }
