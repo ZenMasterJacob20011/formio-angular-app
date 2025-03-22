@@ -33,10 +33,12 @@
 }
 
 .panel-top{
-
+  height: 50px;
 }
 
 .panel-bottom{
+  height: 30px;
+  margin-bottom: -2px;
 }
 
 .panel-resources .panel-title {
