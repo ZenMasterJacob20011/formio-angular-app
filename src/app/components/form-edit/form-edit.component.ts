@@ -48,6 +48,11 @@ export class FormEditComponent {
       const realThis = this;
       this.formioServiceWrapper.saveForm(this.form).subscribe({
         next(value: any) {
+          if (realThis.formType === formType.resource){
+            realThis.formioServiceWrapper.emitResourceGridRefresh();
+          }else{
+            realThis.formioServiceWrapper.emitFormGridRefresh();
+          }
           if (realThis.editType === editType.CREATE) {
             realThis.router.navigate([realThis.formType, value._id, 'edit'])
           }
