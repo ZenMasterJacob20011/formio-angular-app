@@ -14,7 +14,7 @@
     <div class="panel-body">
       <formio-grid [isActionAllowed]="isActionAllowed" (rowSelect)="navigateToViewPage($event)"
                    src="http://localhost:3001" gridType="form"
-                   [query]="{type: 'resource'}" (rowAction)="handleRowAction($event)" [refresh]="refreshResourceGrid"></formio-grid>
+                   [query]="{type: 'resource'}" (rowAction)="handleRowAction($event)" [refresh]="this.formioServiceWrapper.refreshResourceGrid"></formio-grid>
     </div>
   </div>
 </ng-template>
@@ -33,7 +33,7 @@
     <div class="panel-body">
       <formio-grid [isActionAllowed]="isActionAllowed" (rowSelect)="navigateToViewPage($event)"
                    src="http://localhost:3001" gridType="form"
-                   [query]="{type: 'form'}" (rowAction)="handleRowAction($event)" [refresh]="refreshFormGrid"></formio-grid>
+                   [query]="{type: 'form'}" (rowAction)="handleRowAction($event)" [refresh]="this.formioServiceWrapper.refreshFormGrid"></formio-grid>
     </div>
   </div>
 </ng-template>

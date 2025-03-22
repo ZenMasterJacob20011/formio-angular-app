@@ -1,7 +1,6 @@
-import {Injectable} from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import {FormioForm, FormioService} from '@formio/angular';
 import {Formio} from '@formio/js';
-import {formType} from '../app.component';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +8,12 @@ import {formType} from '../app.component';
 export class FormioServiceWrapper {
   formioService: FormioService | undefined
   form: FormioForm | undefined
+  refreshResourceGrid: EventEmitter<object>
+  refreshFormGrid: EventEmitter<object>
 
   constructor() {
+    this.refreshResourceGrid = new EventEmitter<object>;
+    this.refreshFormGrid = new EventEmitter<object>;
   }
 
   saveForm(form: FormioForm) {
@@ -31,4 +34,13 @@ export class FormioServiceWrapper {
     const formio = new Formio(`/form/${_id}`);
     return formio.delete('form');
   }
+
+  emitResourceGridRefresh() {
+    this.refreshResourceGrid.emit({type: 'resource'});
+  }
+
+  emitFormGridRefresh() {
+    this.refreshFormGrid.emit({type: 'form'});
+  }
+
 }
