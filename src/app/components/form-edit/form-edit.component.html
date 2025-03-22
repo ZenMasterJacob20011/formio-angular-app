@@ -4,7 +4,8 @@
       <span class="d-inline-block w-50 me-3">
         <div class="d-flex justify-content-between align-items-center mb-2">
           <label class="fw-bolder form-label" for="formTitle">Form Title</label>
-          <input class="form-control w-50" id="formTitle" type="text" [(ngModel)]="formTitle">
+          <input class="form-control w-50" id="formTitle" type="text" [(ngModel)]="formTitle"
+                 (ngModelChange)="handleTitleChange()">
         </div>
         <div class="d-flex justify-content-between align-items-center">
           <label class="fw-bolder form-label" for="formName">Form Name</label>
@@ -32,6 +33,7 @@
   </div>
   <formio-builder [form]="form"></formio-builder>
   <div class="d-flex justify-content-end">
-    <button (click)="saveForm()" class="btn btn-primary">{{ _.capitalize(editType) }} {{ _.capitalize(formType) }}</button>
+    <button (click)="saveForm()" class="btn btn-primary">{{ _.capitalize(editType) }} {{ _.capitalize(formType) }}
+    </button>
   </div>
 </div>
