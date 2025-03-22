@@ -1,11 +1,19 @@
 import { Component } from '@angular/core';
+import {FormioModule} from '@formio/angular';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-use-tab',
-  imports: [],
+  imports: [
+    FormioModule
+  ],
   templateUrl: './use-tab.component.html',
   styleUrl: './use-tab.component.css'
 })
 export class UseTabComponent {
+  public formUrl: string
 
+  constructor(public activatedRouter: ActivatedRoute) {
+    this.formUrl = `/form/${activatedRouter.parent?.snapshot.paramMap.get('id')}`;
+  }
 }
