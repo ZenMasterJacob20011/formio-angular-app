@@ -111,6 +111,9 @@ export class AppComponent implements AfterViewInit {
           }
         });
       }
+    }else if(event.action === 'edit'){
+      const formType: formType = event.row.type;
+      this.router.navigate([formType, event.row._id, 'edit']);
     }
   }
 }
