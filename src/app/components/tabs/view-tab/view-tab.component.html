@@ -11,8 +11,9 @@
   <formio-grid [refresh]="refreshSubmissions" [src]="formUrl" (rowSelect)="handleSubmissionClick($event)"></formio-grid>
   @if (src) {
     <div class="panel">
-      <div class="panel-header px-4">
+      <div class="panel-header px-3 d-flex justify-content-between align-items-center">
         <button class="btn btn-sm btn-danger" (click)="deleteSubmission()">Delete Submission</button>
+        <i (click)="closeSubmission()" class="bi bi-x-lg submission-close"></i>
       </div>
       <div class="panel-body p-3">
         <ndc-dynamic [ndcDynamicComponent]="FormioComponent" [ndcDynamicInputs]="{src, submission}"
