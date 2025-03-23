@@ -8,5 +8,9 @@
     <p>To flag which fields appear in the table below, click <b>Edit Form</b> above, view the <b>Settings</b> for any
       one field, then toggle the <b>Table View</b> checkbox.</p>
   </div>
-  <formio-grid [src]="formUrl"></formio-grid>
+  <formio-grid [src]="formUrl" (rowSelect)="handleSubmissionClick($event)"></formio-grid>
+  @if (src) {
+    <ng-container *ngComponentOutlet="FormioComponent;
+                                    inputs: {src, submission}"></ng-container>
+  }
 </div>
