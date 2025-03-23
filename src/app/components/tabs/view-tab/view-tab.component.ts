@@ -11,7 +11,7 @@ import {FormioComponent} from '@formio/angular';
     NgComponentOutlet
   ],
   templateUrl: './view-tab.component.html',
-  styleUrl: './view-tab.component.css'
+  styleUrls: ['./view-tab.component.css', '../../../app.component.css']
 })
 export class ViewTabComponent {
   formUrl: string
