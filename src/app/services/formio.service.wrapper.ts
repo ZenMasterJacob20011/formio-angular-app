@@ -35,6 +35,11 @@ export class FormioServiceWrapper {
     return formio.delete('form');
   }
 
+  deleteSubmission(submissionURL: string){
+    this.formioService = new FormioService(submissionURL);
+    return this.formioService.deleteSubmission();
+  }
+
   emitResourceGridRefresh() {
     this.refreshResourceGrid.emit({type: 'resource'});
   }

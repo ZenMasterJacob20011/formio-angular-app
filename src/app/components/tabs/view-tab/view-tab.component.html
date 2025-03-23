@@ -12,7 +12,7 @@
   @if (src) {
     <div class="panel">
       <div class="panel-header px-4">
-        <button class="btn btn-sm btn-danger">Delete Submission</button>
+        <button class="btn btn-sm btn-danger" (click)="deleteSubmission()">Delete Submission</button>
       </div>
       <div class="panel-body p-3">
         <ng-container *ngComponentOutlet="FormioComponent; inputs: {src, submission}"></ng-container>
