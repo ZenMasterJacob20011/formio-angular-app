@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid p-3">
   <div class="d-flex justify-content-between align-content-center">
     <div class="export-buttons">
       <button class="btn btn-primary btn-sm">Export JSON <i class="bi bi-download"></i></button>
@@ -10,7 +10,13 @@
   </div>
   <formio-grid [src]="formUrl" (rowSelect)="handleSubmissionClick($event)"></formio-grid>
   @if (src) {
-    <ng-container *ngComponentOutlet="FormioComponent;
-                                    inputs: {src, submission}"></ng-container>
+    <div class="panel">
+      <div class="panel-header px-4">
+        <button class="btn btn-sm btn-danger">Delete Submission</button>
+      </div>
+      <div class="panel-body p-3">
+        <ng-container *ngComponentOutlet="FormioComponent; inputs: {src, submission}"></ng-container>
+      </div>
+    </div>
   }
 </div>
