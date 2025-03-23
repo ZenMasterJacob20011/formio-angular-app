@@ -5284,6 +5284,13 @@ neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
+ng-dynamic-component@^10.8.2:
+  version "10.8.2"
+  resolved "https://registry.yarnpkg.com/ng-dynamic-component/-/ng-dynamic-component-10.8.2.tgz#34b338523d548b510e41f67faec219f6d0084de8"
+  integrity sha512-iBj2xHp72lFp/pv7NsY4SMtH03Rpyt4ebReb35lj/6WtjRA+7mZySSLyDKF7qF9l/1cHYE2MstFwIWnoqDCtdg==
+  dependencies:
+    tslib "^2.0.0"
+
 ngx-bootstrap@^19.0.2:
   version "19.0.2"
   resolved "https://registry.yarnpkg.com/ngx-bootstrap/-/ngx-bootstrap-19.0.2.tgz#328b278317346a35840108e3b160ade305b3e815"

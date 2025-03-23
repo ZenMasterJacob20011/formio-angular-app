@@ -15,7 +15,8 @@
         <button class="btn btn-sm btn-danger" (click)="deleteSubmission()">Delete Submission</button>
       </div>
       <div class="panel-body p-3">
-        <ng-container *ngComponentOutlet="FormioComponent; inputs: {src, submission}"></ng-container>
+        <ndc-dynamic [ndcDynamicComponent]="FormioComponent" [ndcDynamicInputs]="{src, submission}"
+                     [ndcDynamicOutputs]="{submit: handleSubmissionUpdate}"></ndc-dynamic>
       </div>
     </div>
   }

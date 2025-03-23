@@ -1,15 +1,22 @@
-import {Component, EventEmitter, ViewChild, ViewContainerRef} from '@angular/core';
+import {Component, EventEmitter} from '@angular/core';
 import {FormioGrid} from '@formio/angular/grid';
 import {ActivatedRoute} from '@angular/router';
-import {NgComponentOutlet} from '@angular/common';
 import {FormioComponent} from '@formio/angular';
 import {FormioServiceWrapper} from '../../../services/formio.service.wrapper';
+import {DynamicComponent, DynamicIoDirective, IoEventContextToken} from 'ng-dynamic-component';
 
 @Component({
   selector: 'app-view-tab',
   imports: [
     FormioGrid,
-    NgComponentOutlet
+    DynamicIoDirective,
+    DynamicComponent,
+  ],
+  providers: [
+    {
+      provide: IoEventContextToken,
+      useExisting: ViewTabComponent
+    }
   ],
   templateUrl: './view-tab.component.html',
   styleUrls: ['./view-tab.component.css', '../../../app.component.css']
@@ -20,7 +27,6 @@ export class ViewTabComponent {
   submission: object | undefined
   submissionId: string | undefined
   refreshSubmissions: EventEmitter<object>
-  @ViewChild('container', {read: ViewContainerRef, static: true}) container!: ViewContainerRef
 
   constructor(private formioServiceWrapper: FormioServiceWrapper, activatedRouter: ActivatedRoute) {
     this.formUrl = `/form/${activatedRouter.parent?.snapshot.paramMap.get('id')}`;
@@ -30,10 +36,14 @@ export class ViewTabComponent {
   handleSubmissionClick(event: any) {
     this.src = undefined;
     this.submission = undefined;
-    console.log(event);
     this.submissionId = event._id;
     this.submission = {data: event.data, _id: event._id};
-    this.src = `/form/${event.form}`
+    this.src = `/form/${event.form}`;
+  }
+
+  handleSubmissionUpdate(event: any) {
+    this.refreshSubmissions.emit({});
+    this.src = undefined;
   }
 
   deleteSubmission() {
