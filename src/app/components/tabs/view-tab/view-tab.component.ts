@@ -34,7 +34,7 @@ export class ViewTabComponent {
   }
 
   handleSubmissionClick(event: any) {
-    this.src = undefined;
+    this.closeSubmission()
     this.submission = undefined;
     this.submissionId = event._id;
     this.submission = {data: event.data, _id: event._id};
@@ -43,7 +43,7 @@ export class ViewTabComponent {
 
   handleSubmissionUpdate(event: any) {
     this.refreshSubmissions.emit({});
-    this.src = undefined;
+    this.closeSubmission()
   }
 
   deleteSubmission() {
@@ -51,9 +51,12 @@ export class ViewTabComponent {
     this.formioServiceWrapper.deleteSubmission(`${this.src}/submission/${this.submissionId}`).subscribe({
       next() {
         realThis.refreshSubmissions.emit({});
-        realThis.src = undefined;
+        realThis.closeSubmission();
       }
     });
+  }
+  closeSubmission(){
+    this.src = undefined;
   }
 
   protected readonly FormioComponent = FormioComponent;
