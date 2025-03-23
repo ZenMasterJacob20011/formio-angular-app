@@ -8,7 +8,7 @@
     <p>To flag which fields appear in the table below, click <b>Edit Form</b> above, view the <b>Settings</b> for any
       one field, then toggle the <b>Table View</b> checkbox.</p>
   </div>
-  <formio-grid [src]="formUrl" (rowSelect)="handleSubmissionClick($event)"></formio-grid>
+  <formio-grid [refresh]="refreshSubmissions" [src]="formUrl" (rowSelect)="handleSubmissionClick($event)"></formio-grid>
   @if (src) {
     <div class="panel">
       <div class="panel-header px-4">

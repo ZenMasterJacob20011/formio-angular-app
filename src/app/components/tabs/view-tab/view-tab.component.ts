@@ -1,4 +1,4 @@
-import {Component, ViewChild, ViewContainerRef} from '@angular/core';
+import {Component, EventEmitter, ViewChild, ViewContainerRef} from '@angular/core';
 import {FormioGrid} from '@formio/angular/grid';
 import {ActivatedRoute} from '@angular/router';
 import {NgComponentOutlet} from '@angular/common';
@@ -19,10 +19,12 @@ export class ViewTabComponent {
   src: string | undefined
   submission: object | undefined
   submissionId: string | undefined
+  refreshSubmissions: EventEmitter<object>
   @ViewChild('container', {read: ViewContainerRef, static: true}) container!: ViewContainerRef
 
   constructor(private formioServiceWrapper: FormioServiceWrapper, activatedRouter: ActivatedRoute) {
     this.formUrl = `/form/${activatedRouter.parent?.snapshot.paramMap.get('id')}`;
+    this.refreshSubmissions = new EventEmitter();
   }
 
   handleSubmissionClick(event: any) {
@@ -35,9 +37,11 @@ export class ViewTabComponent {
   }
 
   deleteSubmission() {
+    const realThis = this;
     this.formioServiceWrapper.deleteSubmission(`${this.src}/submission/${this.submissionId}`).subscribe({
       next() {
-
+        realThis.refreshSubmissions.emit({});
+        realThis.src = undefined;
       }
     });
   }
