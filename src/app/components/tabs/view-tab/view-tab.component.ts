@@ -30,7 +30,7 @@ export class ViewTabComponent {
     this.submission = undefined;
     console.log(event);
     this.submissionId = event._id;
-    this.submission = {data: event.data};
+    this.submission = {data: event.data, _id: event._id};
     this.src = `/form/${event.form}`
   }
 
