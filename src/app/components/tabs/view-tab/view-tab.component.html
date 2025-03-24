@@ -1,8 +1,8 @@
 <div class="container-fluid p-3">
   <div class="d-flex justify-content-between align-content-center">
     <div class="export-buttons">
-      <button class="btn btn-primary btn-sm">Export JSON <i class="bi bi-download"></i></button>
-      <button class="btn btn-primary btn-sm mx-3">Export CSV <i class="bi bi-download"></i></button>
+      <button class="btn btn-primary btn-sm" (click)="exportSubmission(exportType.json)">Export JSON <i class="bi bi-download"></i></button>
+      <button class="btn btn-primary btn-sm mx-3" (click)="exportSubmission(exportType.csv)">Export CSV <i class="bi bi-download"></i></button>
       <button class="btn btn-primary btn-sm">Print To PDF</button>
     </div>
     <p>To flag which fields appear in the table below, click <b>Edit Form</b> above, view the <b>Settings</b> for any

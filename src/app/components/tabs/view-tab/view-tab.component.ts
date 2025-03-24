@@ -5,6 +5,12 @@ import {FormioComponent} from '@formio/angular';
 import {FormioServiceWrapper} from '../../../services/formio.service.wrapper';
 import {DynamicComponent, DynamicIoDirective, IoEventContextToken} from 'ng-dynamic-component';
 
+enum exportType {
+  json = 'json',
+  csv = 'csv'
+}
+
+
 @Component({
   selector: 'app-view-tab',
   imports: [
@@ -55,9 +61,25 @@ export class ViewTabComponent {
       }
     });
   }
-  closeSubmission(){
+
+  closeSubmission() {
     this.src = undefined;
   }
 
+  async exportSubmission(type: exportType) {
+    const response = await fetch(`http://localhost:3001${this.formUrl}/export?format=${type}`, {
+      headers: {
+        'x-jwt-token': localStorage.getItem('formioToken')!
+      }
+    });
+    const blob = await response.blob();
+    const objectURL = URL.createObjectURL(blob);
+    const anchorTag = document.createElement('a');
+    anchorTag.href = objectURL;
+    anchorTag.download = `submissions${type.toUpperCase()}`;
+    anchorTag.click();
+  }
+
   protected readonly FormioComponent = FormioComponent;
+  protected readonly exportType = exportType;
 }
