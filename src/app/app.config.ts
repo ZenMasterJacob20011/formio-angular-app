@@ -5,6 +5,7 @@ import {routes} from './app.routes';
 import {FormioAuthConfig, FormioAuthService} from '@formio/angular/auth';
 import {FORMIO_CONFIG, FormioAppConfig} from '@formio/angular';
 import {CustomRouteReuseStrategy} from './custom-route-reuse-strategy';
+import {provideHttpClient, withFetch} from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
