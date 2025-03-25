@@ -1,1 +1,19 @@
-<ng-template></ng-template>
+<ng-template>
+  <tbody *ngIf="rows">
+    <tr *ngFor="let action of rows">
+      <td>
+        <div class="row">
+          <div class="col-sm-9">
+            <a (click)="onRowSelect($event, action)" class="text-decoration-none"><h5>{{ action.title }}</h5></a>
+            <div class="form-updated small text-muted">
+            </div>
+          </div>
+          <div class="col-sm-3 d-flex justify-content-end align-items-center">
+            <button #edit *ngIf="actionAllowed('formEdit')" class="btn btn-outline-secondary btn-sm form-btn" (click)="onRowAction($event, action, 'edit')"><span class="fa fa-edit bi bi-pencil-square"></span></button>&nbsp;
+            <button #delete *ngIf="actionAllowed('formDelete')" class="btn btn-secondary btn-sm form-btn form-btn-delete" (click)="onRowAction($event, action, 'delete')" title="Delete form"><span class="fa fa-trash bi bi-trash"></span></button>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</ng-template>
