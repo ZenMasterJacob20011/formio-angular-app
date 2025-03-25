@@ -1,25 +1,26 @@
-import { Component } from '@angular/core';
+import {AfterViewChecked, Component} from '@angular/core';
 import {GridFooterComponent} from '@formio/angular/grid';
 import {FormsModule} from '@angular/forms';
-import {NgForOf} from '@angular/common';
+import Choices from 'choices.js';
 
 @Component({
   selector: 'app-action-footer',
   imports: [
-    FormsModule,
-    NgForOf
+    FormsModule
   ],
   templateUrl: './action-footer.component.html',
   styleUrl: './action-footer.component.css'
 })
-export class ActionFooterComponent extends GridFooterComponent{
-  actions: {value: string, label: string}[]
+export class ActionFooterComponent extends GridFooterComponent implements AfterViewChecked {
+  actions: { value: string, label: string }[]
+  choices: Choices | undefined
+
   constructor() {
     super();
     this.actions = this.getActions();
   }
 
-  getActions(){
+  getActions() {
     return [
       {
         value: 'email',
@@ -46,5 +47,16 @@ export class ActionFooterComponent extends GridFooterComponent{
         label: 'Webhook'
       }
     ]
+  }
+
+  ngAfterViewChecked(): void {
+    if (!this.choices && document.getElementById('choices')) {
+      this.choices = new Choices(document.getElementById('choices')!, {
+        // @ts-ignore
+        classNames: {
+          containerOuter: ['choices', 'w-25', 'd-inline-block', 'mb-0']
+        }
+      });
+    }
   }
 }
