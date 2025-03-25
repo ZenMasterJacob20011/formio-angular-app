@@ -1,7 +1,7 @@
 <ng-template>
-  <div class="container-fluid mt-3">
-    <select class="form-select w-25 d-inline-block">
-      <option *ngFor="let action of actions" [value]="action.value">{{action.label}}</option>
+  <div class="container-fluid mt-3 d-flex align-items-center">
+    <select id="choices">
+<!--      <option *ngFor="let action of actions" [value]="action.value">{{action.label}}</option>-->
     </select>
     <button class="btn btn-primary btn-sm mx-2 px-3">+ Add Action</button>
     <p class="d-inline-block text-secondary"><a class="link-primary" href="https://help.form.io/userguide/form-building/actions">View documentation</a>on actions</p>
