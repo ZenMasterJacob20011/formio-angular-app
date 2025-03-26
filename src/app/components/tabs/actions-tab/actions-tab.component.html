@@ -1,3 +1,6 @@
 <div class="container-fluid">
-  <formio-grid [components]="components" [src]="actionsUrl"></formio-grid>
+  <formio-grid [components]="components" [src]="actionsUrl" (createItem)="handleAddAction($event)"></formio-grid>
+  @if (actionForm) {
+    <ndc-dynamic [ndcDynamicComponent]="FormioComponent" [ndcDynamicInputs]="{form: actionForm}"></ndc-dynamic>
+  }
 </div>
