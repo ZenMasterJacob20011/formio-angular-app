@@ -52,6 +52,7 @@ export class ActionFooterComponent extends GridFooterComponent implements AfterV
   ngAfterViewChecked(): void {
     if (!this.choices && document.getElementById('choices')) {
       this.choices = new Choices(document.getElementById('choices')!, {
+        choices: this.getActions(),
         // @ts-ignore
         classNames: {
           containerOuter: ['choices', 'w-25', 'd-inline-block', 'mb-0']
