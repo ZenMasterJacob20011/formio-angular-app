@@ -24,27 +24,33 @@ export class ActionFooterComponent extends GridFooterComponent implements AfterV
     return [
       {
         value: 'email',
-        label: 'Email'
+        label: 'Email',
+        selected: false
       },
       {
         value: 'login',
-        label: 'Login'
+        label: 'Login',
+        selected: false
       },
       {
         value: 'resetpassword',
-        label: 'Reset Password'
+        label: 'Reset Password',
+        selected: false
       },
       {
         value: 'roleassignment',
-        label: 'Role Assignment'
+        label: 'Role Assignment',
+        selected: false
       },
       {
         value: 'savesubmission',
-        label: 'Save Submission'
+        label: 'Save Submission',
+        selected: false
       },
       {
         value: 'webhook',
-        label: 'Webhook'
+        label: 'Webhook',
+        selected: false
       }
     ]
   }
@@ -52,7 +58,9 @@ export class ActionFooterComponent extends GridFooterComponent implements AfterV
   ngAfterViewChecked(): void {
     if (!this.choices && document.getElementById('choices')) {
       this.choices = new Choices(document.getElementById('choices')!, {
+        items: [],
         choices: this.getActions(),
+        removeItemButton: true,
         // @ts-ignore
         classNames: {
           containerOuter: ['choices', 'w-25', 'd-inline-block', 'mb-0']
