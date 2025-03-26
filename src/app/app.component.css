@@ -50,3 +50,11 @@
   color: rgb(57, 119, 24);
   font-weight: bolder;
 }
+
+.panel{
+  min-height: 700px;
+}
+
+.panel-body{
+  min-height: 700px;
+}

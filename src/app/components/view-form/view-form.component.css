@@ -33,6 +33,7 @@ border-top-color: rgb(170, 211, 244);
 
 .panel-body {
   max-height: 700px;
+  min-height: 700px;
   overflow-y: auto;
   border-color: rgb(222, 226, 230);
   border-style: none solid solid;
