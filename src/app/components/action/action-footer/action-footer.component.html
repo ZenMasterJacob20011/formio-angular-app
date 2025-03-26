@@ -3,7 +3,7 @@
     <select id="choices" data-placeholder=" ">
 <!--      <option *ngFor="let action of actions" [value]="action.value">{{action.label}}</option>-->
     </select>
-    <button class="btn btn-primary btn-sm mx-2 px-3">+ Add Action</button>
+    <button class="btn btn-primary btn-sm mx-2 px-3" (click)="this.createItem.emit(getSelectedAction())">+ Add Action</button>
     <p class="d-inline-block text-secondary"><a class="link-primary" href="https://help.form.io/userguide/form-building/actions">View documentation</a>on actions</p>
   </div>
 </ng-template>

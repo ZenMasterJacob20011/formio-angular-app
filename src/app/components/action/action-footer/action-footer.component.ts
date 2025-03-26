@@ -33,17 +33,17 @@ export class ActionFooterComponent extends GridFooterComponent implements AfterV
         selected: false
       },
       {
-        value: 'resetpassword',
+        value: 'resetpass',
         label: 'Reset Password',
         selected: false
       },
       {
-        value: 'roleassignment',
+        value: 'role',
         label: 'Role Assignment',
         selected: false
       },
       {
-        value: 'savesubmission',
+        value: 'save',
         label: 'Save Submission',
         selected: false
       },
@@ -53,6 +53,10 @@ export class ActionFooterComponent extends GridFooterComponent implements AfterV
         selected: false
       }
     ]
+  }
+
+  getSelectedAction(){
+    return this.choices?.getValue(true);
   }
 
   ngAfterViewChecked(): void {
