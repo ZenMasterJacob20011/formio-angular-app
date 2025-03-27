@@ -79,7 +79,6 @@ export class ViewTabComponent {
     anchorTag.download = `submissions${type.toUpperCase()}`;
     anchorTag.click();
   }
-
-  protected readonly FormioComponent = FormioComponent;
   protected readonly exportType = exportType;
+  protected readonly FormioComponent = FormioComponent;
 }
