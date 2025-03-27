@@ -1,11 +1,21 @@
-import { Component } from '@angular/core';
-import {FormioComponent, FormioForm} from '@formio/angular';
+import {Component} from '@angular/core';
+import {ExtendedComponentSchema, FormioComponent} from '@formio/angular';
 import {FormioGrid} from '@formio/angular/grid';
 import {ActionHeaderComponent} from '../../action/action-header/action-header.component';
 import {ActionBodyComponent} from '../../action/action-body/action-body.component';
 import {ActionFooterComponent} from '../../action/action-footer/action-footer.component';
 import {ActivatedRoute} from '@angular/router';
 import {DynamicComponent, DynamicIoDirective} from 'ng-dynamic-component';
+
+type action = {
+  access: { handler: boolean, method: boolean },
+  defaults: { handler: string[], method: string[] },
+  description: string,
+  name: string,
+  priority: number,
+  settingsForm: { components: ExtendedComponentSchema[], action: string },
+  title: string
+}
 
 
 @Component({
@@ -21,7 +31,8 @@ import {DynamicComponent, DynamicIoDirective} from 'ng-dynamic-component';
 export class ActionsTabComponent {
   components: any
   actionsUrl: string
-  actionForm: FormioForm | undefined
+  action: action | undefined
+
   constructor(activatedRoute: ActivatedRoute) {
     this.components = {};
     this.components.header = ActionHeaderComponent;
@@ -30,8 +41,8 @@ export class ActionsTabComponent {
     this.actionsUrl = `http://localhost:3001/form/${activatedRoute.parent?.snapshot.paramMap.get('id')}/action`;
   }
 
-  async handleAddAction(action: string){
-    this.actionForm = (await this.getActionForm(action)).settingsForm;
+  async handleAddAction(action: string) {
+    this.action = await this.getActionForm(action);
   }
 
   async getActionForm(action: string) {
@@ -41,6 +52,10 @@ export class ActionsTabComponent {
       }
     });
     return response.json();
+  }
+
+  handleActionSubmit(submission: any) {
+    console.log(submission);
   }
 
 
