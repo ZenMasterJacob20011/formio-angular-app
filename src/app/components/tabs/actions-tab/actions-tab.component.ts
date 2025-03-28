@@ -6,6 +6,8 @@ import {ActionBodyComponent} from '../../action/action-body/action-body.componen
 import {ActionFooterComponent} from '../../action/action-footer/action-footer.component';
 import {ActivatedRoute} from '@angular/router';
 import {DynamicComponent, DynamicIoDirective, IoEventContextToken} from 'ng-dynamic-component';
+import {FormioServiceWrapper} from '../../../services/formio.service.wrapper';
+import _ from 'lodash';
 
 type action = {
   access: { handler: boolean, method: boolean },
@@ -40,7 +42,7 @@ export class ActionsTabComponent {
   action: action | undefined
   refreshActions: EventEmitter<object>
 
-  constructor(activatedRoute: ActivatedRoute) {
+  constructor(activatedRoute: ActivatedRoute, private formioServiceWrapper: FormioServiceWrapper) {
     this.components = {};
     this.components.header = ActionHeaderComponent;
     this.components.body = ActionBodyComponent;
@@ -53,7 +55,7 @@ export class ActionsTabComponent {
     this.action = await this.getActionForm(action);
   }
 
-  async getActionForm(action: string) {
+  async getActionForm(action: string): Promise<action> {
     const response = await fetch(`${this.actionsUrl}s/${action}`, {
       headers: {
         'x-jwt-token': localStorage.getItem('formioToken')!
@@ -65,6 +67,11 @@ export class ActionsTabComponent {
   handleActionSubmit() {
     this.refreshActions.emit({});
     this.action = undefined;
+  }
+
+  async handleSelectAction(action: any) {
+    const actionForm = await this.getActionForm(action.name);
+    this.action = _.merge(actionForm, action);
   }
 
 
