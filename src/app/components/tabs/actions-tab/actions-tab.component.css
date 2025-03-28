@@ -1,15 +1,20 @@
-.action-panel{
+.action-panel {
   border-style: solid;
   border-color: #e1e7ec;
   border-width: 1px;
 }
-.action-panel-header{
+
+.action-panel-header {
   border-style: solid;
   border-color: #e1e7ec;
   border-width: 1px;
   padding: 1em;
 }
 
-.action-panel-body{
+.action-panel-body {
   padding: 1em;
+}
+
+.x-icon {
+  cursor: pointer;
 }

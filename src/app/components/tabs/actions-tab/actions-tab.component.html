@@ -1,17 +1,18 @@
 <div class="container-fluid">
   <formio-grid [components]="components" [src]="actionsUrl" (createItem)="handleAddAction($event)"
-               [refresh]="refreshActions" (rowAction)="handleButtonAction($event)" (rowSelect)="handleSelectAction($event)"></formio-grid>
+               [refresh]="refreshActions" (rowAction)="handleButtonAction($event)"
+               (rowSelect)="handleSelectAction($event)"></formio-grid>
   @if (action) {
     <div class="action-panel">
       <div class="action-panel-header">
         <div class="panel-title d-flex justify-content-between">
           <span>{{ _.capitalize(actionType) }} Action: {{ _.capitalize(action.name) }}</span>
-          <i class="bi bi-x-lg"></i>
+          <i class="bi bi-x-lg x-icon" (click)="action = undefined"></i>
         </div>
       </div>
       <div class="action-panel-body">
         <ndc-dynamic [ndcDynamicComponent]="FormioComponent"
-                     [ndcDynamicInputs]="{form: action.settingsForm, submission: {data: action}}"
+                     [ndcDynamicInputs]="{form: this.action?.settingsForm, submission: {data: action}}"
                      [ndcDynamicOutputs]="{submit: this.handleActionSubmit}"></ndc-dynamic>
       </div>
     </div>
