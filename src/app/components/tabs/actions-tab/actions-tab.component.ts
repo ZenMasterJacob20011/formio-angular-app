@@ -71,6 +71,25 @@ export class ActionsTabComponent {
     this.action = undefined;
   }
 
+  handleButtonAction(action: any) {
+    const actionType = action.action;
+    if (actionType === 'delete') {
+      const result = window.confirm('Are you sure you want to delete this action?');
+      if (result) {
+        this.deleteAction(action.row._id);
+      }
+    }
+  }
+
+  deleteAction(actionId: string) {
+    return fetch(`${this.actionsUrl}/${actionId}`, {
+      method: 'DELETE',
+      headers: {
+        'x-jwt-token': localStorage.getItem('formioToken')!
+      }
+    })
+  }
+
   async handleSelectAction(action: any) {
     this.actionType = 'update';
     const actionForm = await this.getActionForm(action.name);
