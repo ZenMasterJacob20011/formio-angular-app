@@ -80,6 +80,8 @@ export class ActionsTabComponent {
           this.refreshActions.emit({});
         });
       }
+    } else if (actionType === 'edit') {
+      this.handleSelectAction(action.row);
     }
   }
 
