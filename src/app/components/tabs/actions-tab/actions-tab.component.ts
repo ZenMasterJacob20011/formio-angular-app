@@ -1,11 +1,11 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter} from '@angular/core';
 import {ExtendedComponentSchema, FormioComponent} from '@formio/angular';
 import {FormioGrid} from '@formio/angular/grid';
 import {ActionHeaderComponent} from '../../action/action-header/action-header.component';
 import {ActionBodyComponent} from '../../action/action-body/action-body.component';
 import {ActionFooterComponent} from '../../action/action-footer/action-footer.component';
 import {ActivatedRoute} from '@angular/router';
-import {DynamicComponent, DynamicIoDirective} from 'ng-dynamic-component';
+import {DynamicComponent, DynamicIoDirective, IoEventContextToken} from 'ng-dynamic-component';
 
 type action = {
   access: { handler: boolean, method: boolean },
@@ -25,6 +25,12 @@ type action = {
     DynamicComponent,
     DynamicIoDirective,
   ],
+  providers: [
+    {
+      provide: IoEventContextToken,
+      useExisting: ActionsTabComponent
+    }
+  ],
   templateUrl: './actions-tab.component.html',
   styleUrl: './actions-tab.component.css'
 })
@@ -32,6 +38,7 @@ export class ActionsTabComponent {
   components: any
   actionsUrl: string
   action: action | undefined
+  refreshActions: EventEmitter<object>
 
   constructor(activatedRoute: ActivatedRoute) {
     this.components = {};
@@ -39,6 +46,7 @@ export class ActionsTabComponent {
     this.components.body = ActionBodyComponent;
     this.components.footer = ActionFooterComponent;
     this.actionsUrl = `http://localhost:3001/form/${activatedRoute.parent?.snapshot.paramMap.get('id')}/action`;
+    this.refreshActions = new EventEmitter();
   }
 
   async handleAddAction(action: string) {
@@ -54,8 +62,9 @@ export class ActionsTabComponent {
     return response.json();
   }
 
-  handleActionSubmit(submission: any) {
-    console.log(submission);
+  handleActionSubmit() {
+    this.refreshActions.emit({});
+    this.action = undefined;
   }
 
 

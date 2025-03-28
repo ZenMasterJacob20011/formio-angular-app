@@ -1,6 +1,9 @@
 <div class="container-fluid">
-  <formio-grid [components]="components" [src]="actionsUrl" (createItem)="handleAddAction($event)"></formio-grid>
+  <formio-grid [components]="components" [src]="actionsUrl" (createItem)="handleAddAction($event)"
+               [refresh]="refreshActions"></formio-grid>
   @if (action) {
-    <ndc-dynamic [ndcDynamicComponent]="FormioComponent" [ndcDynamicInputs]="{form: action.settingsForm, submission: {data: action}}" [ndcDynamicOutputs]="{submit: handleActionSubmit}"></ndc-dynamic>
+    <ndc-dynamic [ndcDynamicComponent]="FormioComponent"
+                 [ndcDynamicInputs]="{form: action.settingsForm, submission: {data: action}}"
+                 [ndcDynamicOutputs]="{submit: this.handleActionSubmit}"></ndc-dynamic>
   }
 </div>

@@ -5,7 +5,6 @@ import {NgForOf, NgIf} from '@angular/common';
 // @ts-ignore
 import {GridHeader} from '@formio/angular/grid/types/grid-header';
 import {get} from 'lodash';
-import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-action-body',
