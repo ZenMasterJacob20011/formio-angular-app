@@ -2,8 +2,18 @@
   <formio-grid [components]="components" [src]="actionsUrl" (createItem)="handleAddAction($event)"
                [refresh]="refreshActions" (rowSelect)="handleSelectAction($event)"></formio-grid>
   @if (action) {
-    <ndc-dynamic [ndcDynamicComponent]="FormioComponent"
-                 [ndcDynamicInputs]="{form: action.settingsForm, submission: {data: action}}"
-                 [ndcDynamicOutputs]="{submit: this.handleActionSubmit}"></ndc-dynamic>
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title d-flex justify-content-between">
+          <span>{{_.capitalize(actionType)}} Action: {{_.capitalize(action.name)}}</span>
+          <i class="bi bi-x-lg"></i>
+        </div>
+      </div>
+      <div class="panel-body">
+        <ndc-dynamic [ndcDynamicComponent]="FormioComponent"
+                     [ndcDynamicInputs]="{form: action.settingsForm, submission: {data: action}}"
+                     [ndcDynamicOutputs]="{submit: this.handleActionSubmit}"></ndc-dynamic>
+      </div>
+    </div>
   }
 </div>
