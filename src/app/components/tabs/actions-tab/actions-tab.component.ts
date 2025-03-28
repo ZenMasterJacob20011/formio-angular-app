@@ -76,7 +76,9 @@ export class ActionsTabComponent {
     if (actionType === 'delete') {
       const result = window.confirm('Are you sure you want to delete this action?');
       if (result) {
-        this.deleteAction(action.row._id);
+        this.deleteAction(action.row._id).then((result) => {
+          this.refreshActions.emit({});
+        });
       }
     }
   }
@@ -87,7 +89,7 @@ export class ActionsTabComponent {
       headers: {
         'x-jwt-token': localStorage.getItem('formioToken')!
       }
-    })
+    }).then(response => response.text())
   }
 
   async handleSelectAction(action: any) {
