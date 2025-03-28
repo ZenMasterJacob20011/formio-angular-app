@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <formio-grid [components]="components" [src]="actionsUrl" (createItem)="handleAddAction($event)"
-               [refresh]="refreshActions"></formio-grid>
+               [refresh]="refreshActions" (rowSelect)="handleSelectAction($event)"></formio-grid>
   @if (action) {
     <ndc-dynamic [ndcDynamicComponent]="FormioComponent"
                  [ndcDynamicInputs]="{form: action.settingsForm, submission: {data: action}}"
