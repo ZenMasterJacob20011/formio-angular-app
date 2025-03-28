@@ -34,12 +34,13 @@ type action = {
     }
   ],
   templateUrl: './actions-tab.component.html',
-  styleUrl: './actions-tab.component.css'
+  styleUrls: ['./actions-tab.component.css', '../../../app.component.css']
 })
 export class ActionsTabComponent {
   components: any
   actionsUrl: string
   action: action | undefined
+  actionType: 'add' | 'update' | undefined
   refreshActions: EventEmitter<object>
 
   constructor(activatedRoute: ActivatedRoute, private formioServiceWrapper: FormioServiceWrapper) {
@@ -52,6 +53,7 @@ export class ActionsTabComponent {
   }
 
   async handleAddAction(action: string) {
+    this.actionType = 'add';
     this.action = await this.getActionForm(action);
   }
 
@@ -70,10 +72,12 @@ export class ActionsTabComponent {
   }
 
   async handleSelectAction(action: any) {
+    this.actionType = 'update';
     const actionForm = await this.getActionForm(action.name);
     this.action = _.merge(actionForm, action);
   }
 
 
   protected readonly FormioComponent = FormioComponent;
+  protected readonly _ = _;
 }
