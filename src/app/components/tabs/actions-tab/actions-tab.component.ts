@@ -34,7 +34,7 @@ type action = {
     }
   ],
   templateUrl: './actions-tab.component.html',
-  styleUrls: ['./actions-tab.component.css', '../../../app.component.css']
+  styleUrl: './actions-tab.component.css'
 })
 export class ActionsTabComponent {
   components: any
